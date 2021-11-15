@@ -2,7 +2,7 @@
 
 
 
-![image-20211115171036823](C:/Users/22105/AppData/Roaming/Typora/typora-user-images/image-20211115171036823.png)
+![image-20211115171036823](https://github.com/liuyunhaozz/image/blob/main/img/20211115171026.png?raw=true)
 
 
 
