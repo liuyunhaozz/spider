@@ -41,20 +41,24 @@ class Yokino(object):
     def run(self):
         input("hit Enter to start downloading")
         # 生产每一页url地址
-        for i in range(1, 16):
-            templete = f'http://k.sina.com.cn/article_7064796172_p1a5183c0c00100pcwv.html#p={i}'
+        for i in range(1, 2):
+            templete = f'https://yande.re/pool/show/97980'
             # 提取地址中的图文链接
             soup = self.get_soup(templete)
             # 利用 css 选择器语法 选择具有值为'image'的itemprop属性的meta标签
-            zipai_links = soup.select("meta[itemprop='image']")   
-            # print(zipai_links[0].get('content'))
-            for j in zipai_links:
+            zipai_links = soup.select("li div a img")   
+
+            # print(zipai_links)
+            # print(zipai_links[0].get('src'))
+            for index, j in enumerate(zipai_links):
                 # 获取 content 属性所对应的值
-                one_link = j.get("content")  
+                one_link = j.get("src")  
+                # print(one_link)
                 print(f"Start downloading {one_link}")
+            
                 # 将链接发给zipai类，执行run函数
                 try:
-                    self.down_jpg(i, 'http:' + one_link)
+                    self.down_jpg(index, one_link)
                     time.sleep(2)
                 except Exception as e:
                     print(f'Get Error in {j}')
@@ -65,5 +69,5 @@ class Yokino(object):
 
 
 if __name__ == '__main__':
-    yokino = Yokino('download')
+    yokino = Yokino('downloads')
     yokino.run()
